@@ -71,7 +71,8 @@ async def choose_destination(client, callback_query):
 
     if choice == 'bot':
         chat_id = callback_query.message.chat.id
-        questions = callback_query.message.chat.user_data.get('questions', [])
+        
+        user_questions = user_data.get(user_id, {}).get('questions', [])
         await send_all_polls(chat_id, client, questions)
         await callback_query.edit_message_text("Quizzes have been sent to the bot.")
         
