@@ -4,7 +4,7 @@ from helper.Database import db  # Database for MongoDB operations
 from config import Config 
 import csv
 import os
-
+user_data = {}
 @Client.on_message(filters.command("uploadcsv") & filters.user(Config.ADMIN_ID))
 async def upload_csv_command(client, message):
     user_id = message.from_user.id
@@ -42,7 +42,8 @@ async def handle_csv_file(client, message):
                 questions = list(reader)
 
             # Store the questions in user data
-            message.chat.user_data['questions'] = questions
+            
+            user_data[user_id] = {'questions': questions}
 
             # Prompt user for destination (Bot or Channel)
             keyboard = [
