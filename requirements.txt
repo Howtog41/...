@@ -1,0 +1,7 @@
+pyrogram
+telebot
+python-telegram-bot
+requests
+motor
+tgcrypto
+APScheduler
